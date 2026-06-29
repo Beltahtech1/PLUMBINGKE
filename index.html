@@ -1,260 +1,699 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beltah Plumbing Solutions</title>
-    <!-- Premium Font Integration -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
-    <!-- Style frameworks -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beltah Plumbing Solutions | Infrastructure Engineering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    :root {
+      --bg: #020617;
+      --surface: #0f172a;
+      --border: #1e293b;
+      --amber: #f59e0b;
+      --amber-glow: rgba(245,158,11,0.15);
+      --green: #22c55e;
+      --text-muted: #94a3b8;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+    .heading-800 { font-weight: 800; }
+    .nav-underline::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--amber);
+      transform-origin: bottom left;
+      transition: transform 0.25s ease-out;
+    }
+    .nav-underline:hover::after { transform: scaleX(1); }
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      display: flex;
+      width: max-content;
+      animation: marquee 25s linear infinite;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-delay: -1ms !important;
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        background-attachment: initial !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0s !important;
+        transition-delay: 0s !important;
+      }
+      .animate-marquee { animation: none !important; flex-wrap: wrap; justify-content: center; }
+    }
+    .focus-ring:focus-visible {
+      outline: 2px solid var(--amber);
+      outline-offset: 4px;
+    }
+  </style>
 </head>
-<body class="bg-slate-950 text-slate-100 selection:bg-amber-500 selection:text-black antialiased overflow-x-hidden">
+<body class="selection:bg-amber-500 selection:text-slate-950">
 
-    <!-- Navbar: Upper Middle Branding -->
-    <nav class="backdrop-blur-xl bg-slate-950/80 sticky top-0 z-40 border-b border-slate-900/60">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row gap-4 justify-between items-center">
-            <!-- Left Filler for desktop balance -->
-            <div class="hidden sm:block w-32"></div>
-            
-            <!-- Upper Middle Balanced Logo -->
-            <a href="#" class="flex flex-col items-center gap-1.5 group transition transform hover:scale-[1.01]">
-                <img src="https://files.catbox.moe/7pvmuj.jpeg" alt="Beltah Plumbing Logo" class="h-12 w-auto object-contain rounded-lg border border-slate-800 shadow-lg">
-                <span class="text-sm font-extrabold tracking-widest text-white uppercase">
-                    Beltah <span class="text-amber-500">Plumbing</span>
-                </span>
-            </a>
-            
-            <!-- Right Dynamic CTA Phone Button -->
-            <a href="tel:+254114141192" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-900 border border-slate-800 text-slate-200 px-5 py-2.5 rounded-full text-sm font-semibold shadow-inner hover:bg-slate-800 hover:border-amber-500/30 active:scale-95 transition-all duration-150">
-                <i class="fa-solid fa-phone text-amber-500 animate-pulse"></i> Call Expert
-            </a>
-        </div>
-    </nav>
+  <!-- SECTION 1 — STICKY NAVBAR -->
+  <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-transparent py-4 px-4 md:px-8">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <a href="#" class="focus-ring flex items-center">
+        <img src="https://files.catbox.moe/7pvmuj.jpeg" alt="Beltah Plumbing Solutions" class="h-12 w-auto object-contain rounded">
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide">
+        <a href="#services" class="nav-underline relative text-slate-300 hover:text-amber-400 transition-colors focus-ring">Services</a>
+        <a href="#gallery" class="nav-underline relative text-slate-300 hover:text-amber-400 transition-colors focus-ring">Gallery</a>
+        <a href="#about" class="nav-underline relative text-slate-300 hover:text-amber-400 transition-colors focus-ring">About</a>
+        <a href="#book" class="nav-underline relative text-slate-300 hover:text-amber-400 transition-colors focus-ring">Book Now</a>
+      </nav>
+      <div class="hidden md:block">
+        <a href="tel:+254114141192" class="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-slate-950 px-5 py-2.5 rounded-full font-bold transition-all transform active:scale-95 shadow-[0_0_15px_rgba(245,158,11,0.3)] animate-pulse hover:animate-none focus-ring">
+          <i class="fa-solid fa-phone"></i> +254 114 141 192
+        </a>
+      </div>
+      <button id="menu-toggle" class="md:hidden text-white text-2xl focus:outline-none focus-ring p-2" aria-label="Toggle Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-slate-950/95 backdrop-blur-lg border-b border-slate-800 py-6 px-4 flex flex-col gap-5 items-center text-center opacity-0 transform -translate-y-4 transition-all duration-300">
+      <a href="#services" class="text-lg font-medium text-slate-200 hover:text-amber-400 w-full py-2">Services</a>
+      <a href="#gallery" class="text-lg font-medium text-slate-200 hover:text-amber-400 w-full py-2">Gallery</a>
+      <a href="#about" class="text-lg font-medium text-slate-200 hover:text-amber-400 w-full py-2">About</a>
+      <a href="#book" class="text-lg font-medium text-slate-200 hover:text-amber-400 w-full py-2">Book Now</a>
+      <a href="tel:+254114141192" class="w-full max-w-xs inline-flex items-center justify-center gap-2 bg-amber-500 text-slate-950 px-5 py-3 rounded-xl font-bold mt-2">
+        <i class="fa-solid fa-phone"></i> +254 114 141 192
+      </a>
+    </div>
+  </header>
 
-    <!-- Hero Section -->
-    <header class="max-w-6xl mx-auto px-6 py-20 text-center md:py-28 relative">
-        <div class="absolute inset-0 bg-radial from-amber-500/10 via-transparent to-transparent blur-3xl -z-10"></div>
-        <span class="inline-flex items-center gap-1.5 bg-slate-900 border border-slate-800 text-amber-500 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-widest mb-6">
-            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> 24/7 Premium Support
-        </span>
-        <h1 class="text-4xl md:text-7xl font-extrabold text-white mt-2 mb-6 tracking-tight uppercase leading-none">
-            Beltah Plumbing<br><span class="bg-linear-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">Solutions</span>
-        </h1>
-        <p class="text-base md:text-lg text-slate-400 max-w-xl mx-auto mb-10 font-light leading-relaxed">
-            High-end engineering for complex commercial and residential plumbing systems. Absolute reliability across Kenya.
-        </p>
-        <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-            <a href="https://wa.me/254114141192" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-emerald-600 text-white px-8 py-4 rounded-xl font-bold shadow-lg shadow-emerald-900/30 hover:bg-emerald-500 active:scale-95 transition-all duration-150">
-                <i class="fa-brands fa-whatsapp text-xl"></i> Instant WhatsApp Dispatch
-            </a>
-            <a href="#book-project" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-900 border border-slate-800 text-slate-300 px-8 py-4 rounded-xl font-bold hover:bg-slate-800 hover:text-white active:scale-95 transition-all duration-150">
-                Book Structural Project
-            </a>
-        </div>
-    </header>
+  <!-- SECTION 2 — HERO -->
+  <section class="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-4 overflow-hidden">
+    <div class="absolute inset-0 z-0 bg-[#020617]"></div>
+    <div class="absolute inset-0 z-0 opacity-8" style="background: radial-gradient(circle at 30% 40%, #f59e0b 0%, transparent 60%);"></div>
+    <div class="absolute inset-0 z-0 opacity-6" style="background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="absolute w-[600px] h-[300px] bg-amber-500/10 blur-[120px] rounded-full transform -rotate-45 -top-10 -left-10 pointer-events-none"></div>
 
-    <!-- Problems Solved Matrix -->
-    <section class="max-w-6xl mx-auto px-6 py-12">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight uppercase">Infrastructure Issues We Solve</h2>
-            <div class="h-1 w-12 bg-amber-500 mx-auto mt-4 rounded-full"></div>
-        </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div class="p-5 rounded-xl bg-slate-900/30 border border-slate-900 flex items-start gap-3 transition hover:border-slate-800">
-                <i class="fa-solid fa-circle-exclamation text-amber-500 mt-1"></i>
-                <div><h4 class="font-bold text-sm text-white">Burst Pipes</h4><p class="text-xs text-slate-500 mt-0.5">High-pressure structural failures.</p></div>
-            </div>
-            <div class="p-5 rounded-xl bg-slate-900/30 border border-slate-900 flex items-start gap-3 transition hover:border-slate-800">
-                <i class="fa-solid fa-circle-exclamation text-amber-500 mt-1"></i>
-                <div><h4 class="font-bold text-sm text-white">Sewer Backups</h4><p class="text-xs text-slate-500 mt-0.5">Main line extraction & remediation.</p></div>
-            </div>
-            <div class="p-5 rounded-xl bg-slate-900/30 border border-slate-900 flex items-start gap-3 transition hover:border-slate-800">
-                <i class="fa-solid fa-circle-exclamation text-amber-500 mt-1"></i>
-                <div><h4 class="font-bold text-sm text-white">Hidden Slab Leaks</h4><p class="text-xs text-slate-500 mt-0.5">Sub-surface acoustic profiling.</p></div>
-            </div>
-            <div class="p-5 rounded-xl bg-slate-900/30 border border-slate-900 flex items-start gap-3 transition hover:border-slate-800">
-                <i class="fa-solid fa-circle-exclamation text-amber-500 mt-1"></i>
-                <div><h4 class="font-bold text-sm text-white">Blocked Toilets</h4><p class="text-xs text-slate-500 mt-0.5">Heavy-duty mechanical clearing.</p></div>
-            </div>
-            <div class="p-5 rounded-xl bg-slate-900/30 border border-slate-900 flex items-start gap-3 transition hover:border-slate-800">
-                <i class="fa-solid fa-circle-exclamation text-amber-500 mt-1"></i>
-                <div><h4 class="font-bold text-sm text-white">Low Water Pressure</h4><p class="text-xs text-slate-500 mt-0.5">Flow calibration & line cleanups.</p></div>
-            </div>
-            <div class="p-5 rounded-xl bg-slate-900/30 border border-slate-900 flex items-start gap-3 transition hover:border-slate-800">
-                <i class="fa-solid fa-circle-exclamation text-amber-500 mt-1"></i>
-                <div><h4 class="font-bold text-sm text-white">Corrosion Repair</h4><p class="text-xs text-slate-500 mt-0.5">Advanced tactical copper repiping.</p></div>
-            </div>
-            <div class="p-5 rounded-xl bg-slate-900/30 border border-slate-900 flex items-start gap-3 transition hover:border-slate-800">
-                <i class="fa-solid fa-circle-exclamation text-amber-500 mt-1"></i>
-                <div><h4 class="font-bold text-sm text-white">Heater Malfunctions</h4><p class="text-xs text-slate-500 mt-0.5">Thermostat & element rewires.</p></div>
-            </div>
-            <div class="p-5 rounded-xl bg-slate-900/30 border border-slate-900 flex items-start gap-3 transition hover:border-slate-800">
-                <i class="fa-solid fa-circle-exclamation text-amber-500 mt-1"></i>
-                <div><h4 class="font-bold text-sm text-white">Basement Flooding</h4><p class="text-xs text-slate-500 mt-0.5">Sump pump system execution.</p></div>
-            </div>
-        </div>
-    </section>
+    <div class="relative z-10 max-w-5xl mx-auto text-center flex flex-col items-center gap-6 md:gap-8">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs md:text-sm font-bold tracking-widest uppercase">
+        ◈ KENYA'S INFRASTRUCTURE PRECISION STANDARD
+      </div>
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-none">
+        Beltah Plumbing <br>
+        <span class="bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">Solutions</span>
+      </h1>
+      <p class="max-w-2xl text-base md:text-xl text-slate-400 font-normal leading-relaxed">
+        End-to-end plumbing engineering built for Kenya's residential, commercial, and industrial infrastructure — designed to last decades, not years.
+      </p>
 
-    <!-- Work Gallery: 20 Slots with Lightbox Automation -->
-    <section class="max-w-6xl mx-auto px-6 py-12">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight uppercase">Project Executions</h2>
-            <p class="text-slate-500 text-sm mt-2">Click any project asset frame to expand high-fidelity visual proof</p>
-            <div class="h-1 w-12 bg-amber-500 mx-auto mt-4 rounded-full"></div>
+      <!-- Counter Grid -->
+      <div id="counter-row" class="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-12 w-full max-w-4xl my-4 py-6 border-y border-slate-800/60 bg-slate-900/20 backdrop-blur-sm rounded-2xl">
+        <div class="text-center">
+          <div class="text-3xl md:text-4xl font-extrabold text-white mb-1"><span class="counter" data-target="500">0</span>+</div>
+          <div class="text-xs md:text-sm uppercase tracking-wider text-slate-400 font-semibold">Projects Delivered</div>
         </div>
-        
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-            <div class="aspect-square bg-slate-900 rounded-xl overflow-hidden border border-slate-900 cursor-pointer group relative"><img src="https://files.catbox.moe/376jny.jpeg" alt="Job 1" class="w-full h-full object-cover transition duration-300 group-hover:scale-110 gallery-img"></div>
-            <div class="aspect-square bg-slate-900 rounded-xl overflow-hidden border border-slate-900 cursor-pointer group relative"><img src="https://files.catbox.moe/7ksojt.jpeg" alt="Job 2" class="w-full h-full object-cover transition duration-300 group-hover:scale-110 gallery-img"></div>
-            <div class="aspect-square bg-slate-900 rounded-xl overflow-hidden border border-slate-900 cursor-pointer group relative"><img src="https://files.catbox.moe/pcpvjc.jpeg" alt="Job 3" class="w-full h-full object-cover transition duration-300 group-hover:scale-110 gallery-img"></div>
-            <div class="aspect-square bg-slate-900 rounded-xl overflow-hidden border border-slate-900 cursor-pointer group relative"><img src="https://files.catbox.moe/vx4cc0.jpeg" alt="Job 4" class="w-full h-full object-cover transition duration-300 group-hover:scale-110 gallery-img"></div>
-            <div class="aspect-square bg-slate-900 rounded-xl overflow-hidden border border-slate-900 cursor-pointer group relative"><img src="https://files.catbox.moe/sw4vbj.jpeg" alt="Job 5" class="w-full h-full object-cover transition duration-300 group-hover:scale-110 gallery-img"></div>
-            <div class="aspect-square bg-slate-900 rounded-xl overflow-hidden border border-slate-900 cursor-pointer group relative"><img src="https://files.catbox.moe/woovql.jpeg" alt="Job 6" class="w-full h-full object-cover transition duration-300 group-hover:scale-110 gallery-img"></div>
-            <div class="aspect-square bg-slate-900 rounded-xl overflow-hidden border border-slate-900 cursor-pointer group relative"><img src="https://files.catbox.moe/u9bbel.jpeg" alt="Job 7" class="w-full h-full object-cover transition duration-300 group-hover:scale-110 gallery-img"></div>
-            <!-- Standard dynamic image path slots -->
-            <div class="aspect-square bg-slate-900 rounded-xl overflow-hidden border border-slate-900 cursor-pointer group relative flex items-center justify-center"><img src="WORK_IMAGE_URL_8" alt="Job 8" class="w-full h-full object-cover transition duration-300 group-hover:scale-110 gallery-img" onerror="this.src='https://images.unsplash.com/photo-1581244277943-fe4a9c777189?w=500&auto=format&fit=crop';"></div>
-            <div class="aspect-square bg-slate-900 rounded-xl overflow-hidden border border-slate-900 cursor-pointer group relative flex items-center justify-center"><img src="WORK_IMAGE_URL_9" alt="Job 9" class="w-full h-full object-cover transition duration-300 group-hover:scale-110 gallery-img" onerror="this.src='https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=500&auto=format&fit=crop';"></div>
-            <div class="aspect-square bg-slate-900 rounded-xl overflow-hidden border border-slate-900 cursor-pointer group relative flex items-center justify-center"><img src="WORK_IMAGE_URL_10" alt="Job 10" class="w-full h-full object-cover transition duration-300 group-hover:scale-110 gallery-img" onerror="this.src='https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&auto=format&fit=crop';"></div>
-            <div class="aspect-square bg-slate-900 rounded-xl overflow-hidden border border-slate-900 cursor-pointer group relative flex items-center justify-center"><img src="WORK_IMAGE_URL_11" alt="Job 11" class="w-full h-full object-cover transition duration-300 group-hover:scale-110 gallery-img" onerror="this.src='https://images.unsplash.com/photo-1605647540924-852290f6b0d5?w=500&auto=format&fit=crop';"></div>
-            <div class="aspect-square bg-slate-900 rounded-xl overflow-hidden border border-slate-900 cursor-pointer group relative flex items-center justify-center"><img src="WORK_IMAGE_URL_12" alt="Job 12" class="w-full h-full object-cover transition duration-300 group-hover:scale-110 gallery-img" onerror="this.src='https://images.unsplash.com/photo-1542013936693-8848e5742383?w=500&auto=format&fit=crop';"></div>
-            <div class="aspect-square bg-slate-900 rounded-xl overflow-hidden border border-slate-900 cursor-pointer group relative flex items-center justify-center"><img src="WORK_IMAGE_URL_13" alt="Job 13" class="w-full h-full object-cover transition duration-300 group-hover:scale-110 gallery-img" onerror="this.src='https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=500&auto=format&fit=crop';"></div>
-            <div class="aspect-square bg-slate-900 rounded-xl overflow-hidden border border-slate-900 cursor-pointer group relative flex items-center justify-center"><img src="WORK_IMAGE_URL_14" alt="Job 14" class="w-full h-full object-cover transition duration-300 group-hover:scale-110 gallery-img" onerror="this.src='https://images.unsplash.com/photo-1517646287270-a5a9ca602e5c?w=500&auto=format&fit=crop';"></div>
-            <div class="aspect-square bg-slate-900 rounded-xl overflow-hidden border border-slate-900 cursor-pointer group relative flex items-center justify-center"><img src="WORK_IMAGE_URL_15" alt="Job 15" class="w-full h-full object-cover transition duration-300 group-hover:scale-110 gallery-img" onerror="this.src='https://images.unsplash.com/photo-1632833238851-475983047073?w=500&auto=format&fit=crop';"></div>
-            <div class="aspect-square bg-slate-900 rounded-xl overflow-hidden border border-slate-900 cursor-pointer group relative flex items-center justify-center"><img src="WORK_IMAGE_URL_16" alt="Job 16" class="w-full h-full object-cover transition duration-300 group-hover:scale-110 gallery-img" onerror="this.src='https://images.unsplash.com/photo-1538474660244-430de2a30c45?w=500&auto=format&fit=crop';"></div>
-            <div class="aspect-square bg-slate-900 rounded-xl overflow-hidden border border-slate-900 cursor-pointer group relative flex items-center justify-center"><img src="WORK_IMAGE_URL_17" alt="Job 17" class="w-full h-full object-cover transition duration-300 group-hover:scale-110 gallery-img" onerror="this.src='https://images.unsplash.com/photo-1613214149874-4f53d482c944?w=500&auto=format&fit=crop';"></div>
-            <div class="aspect-square bg-slate-900 rounded-xl overflow-hidden border border-slate-900 cursor-pointer group relative flex items-center justify-center"><img src="WORK_IMAGE_URL_18" alt="Job 18" class="w-full h-full object-cover transition duration-300 group-hover:scale-110 gallery-img" onerror="this.src='https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=500&auto=format&fit=crop';"></div>
-            <div class="aspect-square bg-slate-900 rounded-xl overflow-hidden border border-slate-900 cursor-pointer group relative flex items-center justify-center"><img src="WORK_IMAGE_URL_19" alt="Job 19" class="w-full h-full object-cover transition duration-300 group-hover:scale-110 gallery-img" onerror="this.src='https://images.unsplash.com/photo-1543465871-d4555020134c?w=500&auto=format&fit=crop';"></div>
-            <div class="aspect-square bg-slate-900 rounded-xl overflow-hidden border border-slate-900 cursor-pointer group relative flex items-center justify-center"><img src="WORK_IMAGE_URL_20" alt="Job 20" class="w-full h-full object-cover transition duration-300 group-hover:scale-110 gallery-img" onerror="this.src='https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=500&auto=format&fit=crop';"></div>
+        <div class="text-center">
+          <div class="text-3xl md:text-4xl font-extrabold text-white mb-1"><span class="counter" data-target="12">0</span>+</div>
+          <div class="text-xs md:text-sm uppercase tracking-wider text-slate-400 font-semibold">Years Engineering Experience</div>
         </div>
-    </section>
+        <div class="text-center">
+          <div class="text-3xl md:text-4xl font-extrabold text-amber-400 mb-1">24/7</div>
+          <div class="text-xs md:text-sm uppercase tracking-wider text-slate-400 font-semibold">Emergency Response</div>
+        </div>
+      </div>
 
-    <!-- Global Image Automation Lightbox Container (Hidden by default) -->
-    <div id="lightbox" class="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
-        <button id="lightbox-close" class="absolute top-6 right-6 text-white text-3xl hover:text-amber-500 active:scale-90 transition"><i class="fa-solid fa-xmark"></i></button>
-        <img id="lightbox-img" src="" alt="Enlarged Project Work" class="max-w-full max-h-[85vh] rounded-xl object-contain shadow-2xl border border-slate-900">
+      <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+        <a href="https://wa.me/254114141192" target="_blank" rel="noopener" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-8 py-4 rounded-xl transition-all transform hover:-translate-y-0.5 active:scale-[0.97] focus-ring shadow-lg shadow-emerald-900/30">
+          <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp Engineer
+        </a>
+        <a href="#book" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-amber-500/40 hover:border-amber-500 bg-amber-500/5 hover:bg-amber-500/10 text-amber-400 font-bold px-8 py-4 rounded-xl transition-all transform hover:-translate-y-0.5 active:scale-[0.97] focus-ring">
+          Book Field Visit
+        </a>
+      </div>
+
+      <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 hidden md:block">
+        <a href="#services" class="text-slate-500 hover:text-amber-400 transition-colors focus-ring p-2" aria-label="Scroll Down">
+          <i class="fa-solid fa-chevron-down text-xl animate-bounce"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3 — TRUST BAR -->
+  <section class="w-full bg-slate-900 border-y border-slate-800 overflow-hidden py-4">
+    <!-- Desktop Layout -->
+    <div class="hidden lg:flex max-w-7xl mx-auto justify-between items-center px-4 text-xs font-bold uppercase tracking-wider text-slate-300">
+      <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-500"></i> Licensed & Insured</div>
+      <div class="h-4 w-px bg-slate-800"></div>
+      <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-500"></i> 12-Month Workmanship Warranty</div>
+      <div class="h-4 w-px bg-slate-800"></div>
+      <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-500"></i> Upfront Fixed Pricing</div>
+      <div class="h-4 w-px bg-slate-800"></div>
+      <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-500"></i> Same-Day Emergency Dispatch</div>
+      <div class="h-4 w-px bg-slate-800"></div>
+      <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-500"></i> Nairobi & Nationwide</div>
+    </div>
+    <!-- Mobile Marquee Layout -->
+    <div class="lg:hidden w-full overflow-hidden relative">
+      <div class="animate-marquee whitespace-nowrap flex items-center gap-8 text-xs font-bold uppercase tracking-wider text-slate-300">
+        <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-500"></i> Licensed & Insured</div>
+        <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-500"></i> 12-Month Workmanship Warranty</div>
+        <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-500"></i> Upfront Fixed Pricing</div>
+        <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-500"></i> Same-Day Emergency Dispatch</div>
+        <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-500"></i> Nairobi & Nationwide</div>
+        <!-- Duplicate for loop seamlessness -->
+        <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-500"></i> Licensed & Insured</div>
+        <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-500"></i> 12-Month Workmanship Warranty</div>
+        <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-500"></i> Upfront Fixed Pricing</div>
+        <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-500"></i> Same-Day Emergency Dispatch</div>
+        <div class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-amber-500"></i> Nairobi & Nationwide</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4 — PROBLEMS SOLVED MATRIX -->
+  <section id="services" class="py-20 px-4 max-w-7xl mx-auto scroll-mt-12">
+    <div class="text-center flex flex-col items-center gap-3 mb-16">
+      <span class="text-xs uppercase tracking-widest text-amber-500 font-extrabold">THE 8 INFRASTRUCTURE FAILURES WE ELIMINATE</span>
+      <h2 class="text-3xl md:text-5xl font-extrabold text-white">No Problem Too Complex</h2>
+      <p class="max-w-2xl text-slate-400">From residential leaks to industrial sewer systems — our engineers handle them all.</p>
     </div>
 
-    <!-- Founder Leadership Profile -->
-    <section class="max-w-4xl mx-auto px-6 py-12 mb-16">
-        <div class="bg-slate-900/20 border border-slate-900 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 backdrop-blur-md">
-            <div class="w-44 h-44 rounded-2xl overflow-hidden bg-slate-800 shrink-0 border border-amber-500/20 shadow-xl">
-                <img src="https://files.catbox.moe/vx4cc0.jpeg" alt="Founder Picture" class="w-full h-full object-cover">
-            </div>
-            <div class="text-center md:text-left">
-                <span class="text-xs font-bold text-amber-500 uppercase tracking-widest">The Leadership</span>
-                <h3 class="text-2xl font-extrabold text-white mt-1 mb-3">Meet the Founder</h3>
-                <p class="text-slate-400 font-light leading-relaxed mb-4">
-                    "At Beltah Plumbing Solutions, we treat plumbing as architecture. Our team executes high-performance structural diagnoses to secure infrastructure longevity and system safety for every Kenyan property."
-                </p>
-                <p class="text-sm font-semibold text-white">— Founder, Beltah Plumbing Solutions</p>
-            </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Card 1 -->
+      <div class="group bg-slate-900 border border-slate-800 rounded-2xl p-6 transition-all duration-300 hover:border-amber-500/40 hover:bg-amber-500/5 cursor-default">
+        <div class="text-amber-500 text-3xl mb-4 transition-transform duration-300 group-hover:scale-110 inline-block"><i class="fa-solid fa-faucet-drip"></i></div>
+        <h3 class="text-lg font-bold text-white mb-2">Burst Pipes</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">Sudden pipe failures repaired with surgical precision, restoring flow in hours.</p>
+      </div>
+      <!-- Card 2 -->
+      <div class="group bg-slate-900 border border-slate-800 rounded-2xl p-6 transition-all duration-300 hover:border-amber-500/40 hover:bg-amber-500/5 cursor-default">
+        <div class="text-amber-500 text-3xl mb-4 transition-transform duration-300 group-hover:scale-110 inline-block"><i class="fa-solid fa-toilet"></i></div>
+        <h3 class="text-lg font-bold text-white mb-2">Sewer Backups</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">Root intrusion and blockage removal with CCTV verification and hydro-jetting.</p>
+      </div>
+      <!-- Card 3 -->
+      <div class="group bg-slate-900 border border-slate-800 rounded-2xl p-6 transition-all duration-300 hover:border-amber-500/40 hover:bg-amber-500/5 cursor-default">
+        <div class="text-amber-500 text-3xl mb-4 transition-transform duration-300 group-hover:scale-110 inline-block"><i class="fa-solid fa-house-crack"></i></div>
+        <h3 class="text-lg font-bold text-white mb-2">Hidden Slab Leaks</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">Non-invasive thermal and acoustic detection before walls are ever opened.</p>
+      </div>
+      <!-- Card 4 -->
+      <div class="group bg-slate-900 border border-slate-800 rounded-2xl p-6 transition-all duration-300 hover:border-amber-500/40 hover:bg-amber-500/5 cursor-default">
+        <div class="text-amber-500 text-3xl mb-4 transition-transform duration-300 group-hover:scale-110 inline-block"><i class="fa-solid fa-ban"></i></div>
+        <h3 class="text-lg font-bold text-white mb-2">Blocked Toilets</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">Full drain snake and pressure-clear service for severe commercial blockages.</p>
+      </div>
+      <!-- Card 5 -->
+      <div class="group bg-slate-900 border border-slate-800 rounded-2xl p-6 transition-all duration-300 hover:border-amber-500/40 hover:bg-amber-500/5 cursor-default">
+        <div class="text-amber-500 text-3xl mb-4 transition-transform duration-300 group-hover:scale-110 inline-block"><i class="fa-solid fa-gauge-low"></i></div>
+        <h3 class="text-lg font-bold text-white mb-2">Low Water Pressure</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">Pressure diagnostics and re-routing for full-pressure system restoration.</p>
+      </div>
+      <!-- Card 6 -->
+      <div class="group bg-slate-900 border border-slate-800 rounded-2xl p-6 transition-all duration-300 hover:border-amber-500/40 hover:bg-amber-500/5 cursor-default">
+        <div class="text-amber-500 text-3xl mb-4 transition-transform duration-300 group-hover:scale-110 inline-block"><i class="fa-solid fa-崩"></i><i class="fa-solid fa-triangle-exclamation"></i></div>
+        <h3 class="text-lg font-bold text-white mb-2">Corrosion Repair</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">Old galvanized line replacement with modern copper or CPVC infrastructure.</p>
+      </div>
+      <!-- Card 7 -->
+      <div class="group bg-slate-900 border border-slate-800 rounded-2xl p-6 transition-all duration-300 hover:border-amber-500/40 hover:bg-amber-500/5 cursor-default">
+        <div class="text-amber-500 text-3xl mb-4 transition-transform duration-300 group-hover:scale-110 inline-block"><i class="fa-solid fa-fire-flame-curved"></i></div>
+        <h3 class="text-lg font-bold text-white mb-2">Heater Malfunctions</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">Gas and electric water heater diagnostics, repair, and replacement.</p>
+      </div>
+      <!-- Card 8 -->
+      <div class="group bg-slate-900 border border-slate-800 rounded-2xl p-6 transition-all duration-300 hover:border-amber-500/40 hover:bg-amber-500/5 cursor-default">
+        <div class="text-amber-500 text-3xl mb-4 transition-transform duration-300 group-hover:scale-110 inline-block"><i class="fa-solid fa-water"></i></div>
+        <h3 class="text-lg font-bold text-white mb-2">Basement Flooding</h3>
+        <p class="text-sm text-slate-400 leading-relaxed">Sump pump installation and perimeter drainage engineering for total protection.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5 — PROJECT EXECUTIONS GALLERY -->
+  <section id="gallery" class="py-20 bg-slate-950 px-4 scroll-mt-12">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center flex flex-col items-center gap-3 mb-12">
+        <h2 class="text-3xl md:text-5xl font-extrabold text-white">Project Executions</h2>
+        <p class="max-w-2xl text-slate-400">A selection of infrastructure work completed across Kenya.</p>
+      </div>
+
+      <div class="columns-2 md:columns-3 lg:columns-4 gap-4 [column-fill:_auto]">
+        <!-- Real Images -->
+        <div class="break-inside-avoid mb-4 rounded-xl overflow-hidden cursor-pointer group relative bg-slate-900 border border-slate-800 gallery-item" data-src="https://files.catbox.moe/376jny.jpeg">
+          <img src="https://files.catbox.moe/376jny.jpeg" alt="Infrastructure System Site Execution" class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          <div class="absolute inset-0 bg-slate-950/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4">
+            <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl mb-2"></i>
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-400">View Execution</span>
+          </div>
         </div>
-    </section>
 
-    <!-- Professional Direct Booking Engine -->
-    <section id="book-project" class="max-w-lg mx-auto px-6 py-12 my-20 bg-slate-900/20 rounded-3xl border border-slate-900 relative backdrop-blur-md">
-        <div class="absolute inset-x-0 -top-40 h-80 bg-amber-500/5 blur-3xl -z-10"></div>
-        <h2 class="text-2xl md:text-3xl font-extrabold text-white text-center mb-2 uppercase tracking-tight">Book A Project</h2>
-        <p class="text-slate-500 text-center text-sm mb-8">Submit your plumbing request directly to our desk</p>
-        
-        <form action="https://api.web3forms.com/submit" method="POST" class="space-y-5">
-            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY_HERE">
-            <input type="hidden" name="subject" value="New Project Booking - Beltah Plumbing">
-            <input type="hidden" name="replyto" value="beltahke17@gmail.com">
+        <div class="break-inside-avoid mb-4 rounded-xl overflow-hidden cursor-pointer group relative bg-slate-900 border border-slate-800 gallery-item" data-src="https://files.catbox.moe/7ksojt.jpeg">
+          <img src="https://files.catbox.moe/7ksojt.jpeg" alt="System Pipe Infrastructure Fitting" class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          <div class="absolute inset-0 bg-slate-950/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4">
+            <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl mb-2"></i>
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-400">View Execution</span>
+          </div>
+        </div>
 
-            <div>
-                <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Full Name</label>
-                <input type="text" name="name" required class="w-full px-4 py-3.5 bg-slate-950 rounded-xl border border-slate-800 text-white focus:outline-hidden focus:border-amber-500 transition-all font-light">
-            </div>
-            <div>
-                <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Email Address</label>
-                <input type="email" name="email" required class="w-full px-4 py-3.5 bg-slate-950 rounded-xl border border-slate-800 text-white focus:outline-hidden focus:border-amber-500 transition-all font-light" placeholder="client@example.com">
-            </div>
-            <div>
-                <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Phone Number</label>
-                <input type="tel" name="phone" required class="w-full px-4 py-3.5 bg-slate-950 rounded-xl border border-slate-800 text-white focus:outline-hidden focus:border-amber-500 transition-all font-light">
-            </div>
-            <div>
-                <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Describe Your Infrastructure Issue</label>
-                <textarea name="issue" rows="4" required class="w-full px-4 py-3.5 bg-slate-950 rounded-xl border border-slate-800 text-white focus:outline-hidden focus:border-amber-500 transition-all font-light resize-none" placeholder="Provide details about the leak, blockage, or system failure..."></textarea>
-            </div>
+        <div class="break-inside-avoid mb-4 rounded-xl overflow-hidden cursor-pointer group relative bg-slate-900 border border-slate-800 gallery-item" data-src="https://files.catbox.moe/pcpvjc.jpeg">
+          <img src="https://files.catbox.moe/pcpvjc.jpeg" alt="Commercial Fluid Flow Engineering" class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          <div class="absolute inset-0 bg-slate-950/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4">
+            <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl mb-2"></i>
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-400">View Execution</span>
+          </div>
+        </div>
 
-            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+        <div class="break-inside-avoid mb-4 rounded-xl overflow-hidden cursor-pointer group relative bg-slate-900 border border-slate-800 gallery-item" data-src="https://files.catbox.moe/vx4cc0.jpeg">
+          <img src="https://files.catbox.moe/vx4cc0.jpeg" alt="On-Site Structural Inspection" class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          <div class="absolute inset-0 bg-slate-950/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4">
+            <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl mb-2"></i>
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-400">View Execution</span>
+          </div>
+        </div>
 
-            <button type="submit" class="w-full relative inline-flex items-center justify-center p-4 overflow-hidden text-sm font-bold text-black rounded-xl bg-linear-to-br from-amber-400 to-orange-500 hover:from-amber-400 hover:to-orange-500 active:scale-[0.98] transition-all duration-150 mt-4 cursor-pointer shadow-lg shadow-amber-500/10">
-                Submit & Transmit to Engineering Desk
-            </button>
+        <div class="break-inside-avoid mb-4 rounded-xl overflow-hidden cursor-pointer group relative bg-slate-900 border border-slate-800 gallery-item" data-src="https://files.catbox.moe/sw4vbj.jpeg">
+          <img src="https://files.catbox.moe/sw4vbj.jpeg" alt="High-Pressure Mainline Deployment" class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          <div class="absolute inset-0 bg-slate-950/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4">
+            <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl mb-2"></i>
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-400">View Execution</span>
+          </div>
+        </div>
+
+        <div class="break-inside-avoid mb-4 rounded-xl overflow-hidden cursor-pointer group relative bg-slate-900 border border-slate-800 gallery-item" data-src="https://files.catbox.moe/woovql.jpeg">
+          <img src="https://files.catbox.moe/woovql.jpeg" alt="Precision Commercial Piping Installation" class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          <div class="absolute inset-0 bg-slate-950/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4">
+            <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl mb-2"></i>
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-400">View Execution</span>
+          </div>
+        </div>
+
+        <div class="break-inside-avoid mb-4 rounded-xl overflow-hidden cursor-pointer group relative bg-slate-900 border border-slate-800 gallery-item" data-src="https://files.catbox.moe/u9bbel.jpeg">
+          <img src="https://files.catbox.moe/u9bbel.jpeg" alt="Heavy Core Infrastructure Pipeline" class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          <div class="absolute inset-0 bg-slate-950/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4">
+            <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl mb-2"></i>
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-400">View Execution</span>
+          </div>
+        </div>
+
+        <!-- Placeholders 8-20 with varied rhythm -->
+        <div class="break-inside-avoid mb-4 bg-slate-900 border border-slate-800/60 rounded-xl flex flex-col items-center justify-center text-slate-500 text-center px-4 h-48">
+          <i class="fa-solid fa-camera text-xl mb-2 text-slate-600"></i>
+          <span class="text-xs font-medium">Project Coming Soon</span>
+        </div>
+        <div class="break-inside-avoid mb-4 bg-slate-900 border border-slate-800/60 rounded-xl flex flex-col items-center justify-center text-slate-500 text-center px-4 h-64">
+          <i class="fa-solid fa-camera text-xl mb-2 text-slate-600"></i>
+          <span class="text-xs font-medium">Project Coming Soon</span>
+        </div>
+        <div class="break-inside-avoid mb-4 bg-slate-900 border border-slate-800/60 rounded-xl flex flex-col items-center justify-center text-slate-500 text-center px-4 h-56">
+          <i class="fa-solid fa-camera text-xl mb-2 text-slate-600"></i>
+          <span class="text-xs font-medium">Project Coming Soon</span>
+        </div>
+        <div class="break-inside-avoid mb-4 bg-slate-900 border border-slate-800/60 rounded-xl flex flex-col items-center justify-center text-slate-500 text-center px-4 h-48">
+          <i class="fa-solid fa-camera text-xl mb-2 text-slate-600"></i>
+          <span class="text-xs font-medium">Project Coming Soon</span>
+        </div>
+        <div class="break-inside-avoid mb-4 bg-slate-900 border border-slate-800/60 rounded-xl flex flex-col items-center justify-center text-slate-500 text-center px-4 h-64">
+          <i class="fa-solid fa-camera text-xl mb-2 text-slate-600"></i>
+          <span class="text-xs font-medium">Project Coming Soon</span>
+        </div>
+        <div class="break-inside-avoid mb-4 bg-slate-900 border border-slate-800/60 rounded-xl flex flex-col items-center justify-center text-slate-500 text-center px-4 h-56">
+          <i class="fa-solid fa-camera text-xl mb-2 text-slate-600"></i>
+          <span class="text-xs font-medium">Project Coming Soon</span>
+        </div>
+        <div class="break-inside-avoid mb-4 bg-slate-900 border border-slate-800/60 rounded-xl flex flex-col items-center justify-center text-slate-500 text-center px-4 h-48">
+          <i class="fa-solid fa-camera text-xl mb-2 text-slate-600"></i>
+          <span class="text-xs font-medium">Project Coming Soon</span>
+        </div>
+        <div class="break-inside-avoid mb-4 bg-slate-900 border border-slate-800/60 rounded-xl flex flex-col items-center justify-center text-slate-500 text-center px-4 h-64">
+          <i class="fa-solid fa-camera text-xl mb-2 text-slate-600"></i>
+          <span class="text-xs font-medium">Project Coming Soon</span>
+        </div>
+        <div class="break-inside-avoid mb-4 bg-slate-900 border border-slate-800/60 rounded-xl flex flex-col items-center justify-center text-slate-500 text-center px-4 h-56">
+          <i class="fa-solid fa-camera text-xl mb-2 text-slate-600"></i>
+          <span class="text-xs font-medium">Project Coming Soon</span>
+        </div>
+        <div class="break-inside-avoid mb-4 bg-slate-900 border border-slate-800/60 rounded-xl flex flex-col items-center justify-center text-slate-500 text-center px-4 h-48">
+          <i class="fa-solid fa-camera text-xl mb-2 text-slate-600"></i>
+          <span class="text-xs font-medium">Project Coming Soon</span>
+        </div>
+        <div class="break-inside-avoid mb-4 bg-slate-900 border border-slate-800/60 rounded-xl flex flex-col items-center justify-center text-slate-500 text-center px-4 h-64">
+          <i class="fa-solid fa-camera text-xl mb-2 text-slate-600"></i>
+          <span class="text-xs font-medium">Project Coming Soon</span>
+        </div>
+        <div class="break-inside-avoid mb-4 bg-slate-900 border border-slate-800/60 rounded-xl flex flex-col items-center justify-center text-slate-500 text-center px-4 h-56">
+          <i class="fa-solid fa-camera text-xl mb-2 text-slate-600"></i>
+          <span class="text-xs font-medium">Project Coming Soon</span>
+        </div>
+        <div class="break-inside-avoid mb-4 bg-slate-900 border border-slate-800/60 rounded-xl flex flex-col items-center justify-center text-slate-500 text-center px-4 h-48">
+          <i class="fa-solid fa-camera text-xl mb-2 text-slate-600"></i>
+          <span class="text-xs font-medium">Project Coming Soon</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6 — LEADERSHIP PROFILE -->
+  <section id="about" class="py-20 border-t border-slate-900 max-w-7xl mx-auto px-4 scroll-mt-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-5 flex justify-center">
+        <div class="relative w-[220px] h-[220px] rounded-full p-[4px] bg-amber-500 shadow-[0_0_30px_rgba(245,158,11,0.2)]">
+          <div class="w-full h-full rounded-full p-[1px] bg-slate-950">
+            <img src="https://files.catbox.moe/vx4cc0.jpeg" alt="Samuel Wainaina - Founder & Chief Engineer" class="w-full h-full object-cover rounded-full" loading="lazy">
+          </div>
+        </div>
+      </div>
+      <div class="lg:col-span-7 flex flex-col gap-4 text-center lg:text-left">
+        <span class="text-xs font-extrabold tracking-widest text-amber-500 uppercase">FOUNDER & CHIEF ENGINEER</span>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-white">Samuel Wainaina</h2>
+        <blockquote class="relative border-l-2 border-amber-500 pl-4 py-1 my-2 text-slate-300 italic text-base md:text-lg text-left">
+          "Plumbing is infrastructure. Infrastructure is civilization. Every pipe we lay, every system we engineer, must be built to outlast the structure it serves. Precision is not an option — it is the standard."
+        </blockquote>
+        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 mt-2 text-xs font-bold text-slate-300 uppercase tracking-wide">
+          <span class="bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-md">◈ 12+ Yrs Experience</span>
+          <span class="bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-md">◈ 500+ Projects</span>
+          <span class="bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-md">◈ NCA Certified</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7 — DIRECT BOOKING ENGINE -->
+  <section id="book" class="py-20 bg-slate-950 border-t border-slate-900 px-4 scroll-mt-12">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center flex flex-col items-center gap-3 mb-10">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-white">Book a Service</h2>
+        <p class="max-w-md text-slate-400 text-sm">Fill the form below — we'll confirm within 2 hours during business hours.</p>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-10 shadow-2xl relative">
+        <form id="booking-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+          <input type="hidden" name="subject" value="New Booking — Beltah Plumbing Solutions">
+          <input type="hidden" name="replyto" value="beltahke17@gmail.com">
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="flex flex-col gap-2">
+              <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Full Name</label>
+              <input type="text" name="name" required class="bg-slate-800 border border-slate-700 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 rounded-xl px-4 py-3 text-white outline-none transition-all w-full focus-ring">
+            </div>
+            <div class="flex flex-col gap-2">
+              <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Email Address</label>
+              <input type="email" name="email" required class="bg-slate-800 border border-slate-700 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 rounded-xl px-4 py-3 text-white outline-none transition-all w-full focus-ring">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="flex flex-col gap-2">
+              <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Phone Number</label>
+              <input type="tel" name="phone" placeholder="+254 ..." required class="bg-slate-800 border border-slate-700 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 rounded-xl px-4 py-3 text-white outline-none transition-all w-full focus-ring">
+            </div>
+            <div class="flex flex-col gap-2">
+              <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Service Type</label>
+              <select name="service_type" required class="bg-slate-800 border border-slate-700 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 rounded-xl px-4 py-3 text-white outline-none transition-all w-full focus-ring">
+                <option value="Burst Pipes">Burst Pipes</option>
+                <option value="Sewer Backups">Sewer Backups</option>
+                <option value="Hidden Slab Leaks">Hidden Slab Leaks</option>
+                <option value="Blocked Toilets">Blocked Toilets</option>
+                <option value="Low Water Pressure">Low Water Pressure</option>
+                <option value="Corrosion Repair">Corrosion Repair</option>
+                <option value="Heater Malfunctions">Heater Malfunctions</option>
+                <option value="Basement Flooding">Basement Flooding</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Issue Description</label>
+            <textarea name="description" rows="4" required class="bg-slate-800 border border-slate-700 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 rounded-xl px-4 py-3 text-white outline-none transition-all w-full focus-ring"></textarea>
+          </div>
+
+          <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-slate-950 font-bold py-4 px-6 rounded-xl transition-all transform active:scale-[0.98] flex items-center justify-center gap-2 text-base shadow-lg shadow-amber-950/20 focus-ring">
+            <span id="btn-text">Submit Request</span>
+            <i id="btn-icon" class="fa-solid fa-paper-plane"></i>
+          </button>
         </form>
-    </section>
 
-    <!-- Social Media Pipeline -->
-    <section class="max-w-6xl mx-auto px-6 py-12 text-center">
-        <div class="mb-10">
-            <h2 class="text-2xl md:text-4xl font-extrabold text-white tracking-tight uppercase">Connect With Us</h2>
-            <p class="text-slate-500 text-sm mt-2">Follow our daily projects and updates across networks</p>
-            <div class="h-1 w-12 bg-amber-500 mx-auto mt-4 rounded-full"></div>
+        <div id="form-feedback" class="hidden absolute inset-0 bg-slate-900 rounded-3xl p-8 flex flex-col items-center justify-center text-center transition-all duration-300">
+          <!-- Dynamically populated success/error cards -->
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8 — SOCIAL MEDIA PIPELINE -->
+  <section class="py-16 max-w-7xl mx-auto px-4 text-center border-t border-slate-900">
+    <div class="flex flex-col items-center gap-2 mb-10">
+      <h2 class="text-2xl md:text-3xl font-extrabold text-white">Connect With Us</h2>
+      <p class="text-slate-400 text-sm">Follow our work and reach us instantly.</p>
+    </div>
+
+    <div class="flex flex-wrap items-center justify-center gap-4">
+      <a href="https://wa.me/254114141192" target="_blank" rel="noopener" class="border border-slate-800 bg-slate-900 rounded-2xl px-6 py-4 flex items-center gap-3 transition-all duration-200 active:scale-[0.97] hover:border-emerald-500 hover:text-emerald-400 focus-ring font-semibold text-sm">
+        <i class="fa-brands fa-whatsapp text-xl text-emerald-500"></i> WhatsApp
+      </a>
+      <a href="#" class="border border-slate-800 bg-slate-900 rounded-2xl px-6 py-4 flex items-center gap-3 transition-all duration-200 active:scale-[0.97] hover:border-pink-500 hover:text-pink-400 focus-ring font-semibold text-sm">
+        <i class="fa-brands fa-instagram text-xl text-pink-500"></i> Instagram
+      </a>
+      <a href="#" class="border border-slate-800 bg-slate-900 rounded-2xl px-6 py-4 flex items-center gap-3 transition-all duration-200 active:scale-[0.97] hover:border-red-500 hover:text-red-400 focus-ring font-semibold text-sm">
+        <i class="fa-brands fa-tiktok text-xl text-white"></i> TikTok
+      </a>
+      <a href="#" class="border border-slate-800 bg-slate-900 rounded-2xl px-6 py-4 flex items-center gap-3 transition-all duration-200 active:scale-[0.97] hover:border-blue-500 hover:text-blue-400 focus-ring font-semibold text-sm">
+        <i class="fa-brands fa-facebook text-xl text-blue-500"></i> Facebook
+      </a>
+    </div>
+  </section>
+
+  <!-- SECTION 9 — FOOTER -->
+  <footer class="bg-slate-950 border-t border-slate-900 pt-16 pb-8 px-4">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+      <div class="flex flex-col gap-4">
+        <img src="https://files.catbox.moe/7pvmuj.jpeg" alt="Beltah Plumbing" class="h-10 w-auto object-contain self-start rounded">
+        <p class="text-sm text-slate-400 leading-relaxed max-w-sm">
+          High-performance infrastructure plumbing engineering built for security, longevity, and structural precision nationwide.
+        </p>
+      </div>
+      <div class="flex flex-col gap-3">
+        <h4 class="text-sm font-bold text-white uppercase tracking-wider">Contact Systems</h4>
+        <div class="flex flex-col gap-2 text-sm text-slate-400">
+          <a href="tel:+254114141192" class="hover:text-amber-400 transition-colors flex items-center gap-2"><i class="fa-solid fa-phone text-xs text-amber-500"></i> +254 114 141 192</a>
+          <a href="mailto:beltahke17@gmail.com" class="hover:text-amber-400 transition-colors flex items-center gap-2"><i class="fa-solid fa-envelope text-xs text-amber-500"></i> beltahke17@gmail.com</a>
+          <div class="flex items-center gap-2 mt-1"><i class="fa-solid fa-location-dot text-xs text-amber-500"></i> Nairobi, Kenya</div>
+        </div>
+      </div>
+      <div class="flex flex-col gap-3">
+        <h4 class="text-sm font-bold text-white uppercase tracking-wider">Quick Links</h4>
+        <div class="grid grid-cols-2 gap-2 text-sm text-slate-400">
+          <a href="#services" class="hover:text-amber-400 transition-colors">Services</a>
+          <a href="#gallery" class="hover:text-amber-400 transition-colors">Gallery</a>
+          <a href="#about" class="hover:text-amber-400 transition-colors">About</a>
+          <a href="#book" class="hover:text-amber-400 transition-colors">Book Online</a>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto border-t border-slate-900 pt-6 text-center">
+      <p class="text-xs text-slate-500">© 2026 Beltah Plumbing Solutions. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT PLATFORM LAYER -->
+  <script>
+    // Sticky Navbar Transform Logic
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        navbar.classList.add('backdrop-blur-lg', 'bg-slate-950/90', 'border-slate-800', 'shadow-lg');
+        navbar.classList.remove('border-transparent', 'py-4');
+        navbar.classList.add('py-3');
+      } else {
+        navbar.classList.remove('backdrop-blur-lg', 'bg-slate-950/90', 'border-slate-800', 'shadow-lg', 'py-3');
+        navbar.classList.add('border-transparent', 'py-4');
+      }
+    });
+
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', () => {
+      const isHidden = mobileMenu.classList.contains('hidden');
+      if (isHidden) {
+        mobileMenu.classList.remove('hidden');
+        setTimeout(() => {
+          mobileMenu.classList.remove('opacity-0', '-translate-y-4');
+        }, 10);
+        menuToggle.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+      } else {
+        mobileMenu.classList.add('opacity-0', '-translate-y-4');
+        setTimeout(() => {
+          mobileMenu.classList.add('hidden');
+        }, 300);
+        menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+      }
+    });
+
+    // IntersectionObserver for Counter Animations
+    const counters = document.querySelectorAll('.counter');
+    const counterRow = document.getElementById('counter-row');
+    
+    const startCounters = () => {
+      counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const increment = target / 40;
         
-        <div class="flex flex-wrap justify-center items-center gap-4 max-w-2xl mx-auto">
-            <a href="https://wa.me/254114141192" target="_blank" class="flex items-center gap-3 bg-slate-900 border border-slate-800 hover:border-emerald-500/50 text-slate-300 hover:text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:-translate-y-0.5 active:scale-95 group">
-                <i class="fa-brands fa-whatsapp text-xl text-emerald-500 group-hover:scale-110 transition-transform"></i>
-                <span>WhatsApp</span>
-            </a>
-            <a href="YOUR_INSTAGRAM_URL_HERE" target="_blank" class="flex items-center gap-3 bg-slate-900 border border-slate-800 hover:border-pink-500/50 text-slate-300 hover:text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:-translate-y-0.5 active:scale-95 group">
-                <i class="fa-brands fa-instagram text-xl text-pink-500 group-hover:scale-110 transition-transform"></i>
-                <span>Instagram</span>
-            </a>
-            <a href="YOUR_TIKTOK_URL_HERE" target="_blank" class="flex items-center gap-3 bg-slate-900 border border-slate-800 hover:border-cyan-400/50 text-slate-300 hover:text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:-translate-y-0.5 active:scale-95 group">
-                <i class="fa-brands fa-tiktok text-xl text-cyan-400 group-hover:scale-110 transition-transform"></i>
-                <span>TikTok</span>
-            </a>
-            <a href="YOUR_FACEBOOK_URL_HERE" target="_blank" class="flex items-center gap-3 bg-slate-900 border border-slate-800 hover:border-blue-500/50 text-slate-300 hover:text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:-translate-y-0.5 active:scale-95 group">
-                <i class="fa-brands fa-facebook text-xl text-blue-500 group-hover:scale-110 transition-transform"></i>
-                <span>Facebook</span>
-            </a>
-        </div>
-    </section>
-
-    <!-- Professional Footer -->
-    <footer class="bg-slate-950 text-slate-600 py-12 text-center text-xs border-t border-slate-900 space-y-3">
-        <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 text-sm text-slate-400 mb-2">
-            <a href="mailto:BELTAHKE17@GMAIL.COM" class="hover:text-amber-500 transition flex items-center gap-2">
-                <i class="fa-solid fa-envelope text-amber-500"></i> BELTAHKE17@GMAIL.COM
-            </a>
-            <a href="tel:+254114141192" class="hover:text-amber-500 transition flex items-center gap-2">
-                <i class="fa-solid fa-phone text-amber-500"></i> +254 114 141 192
-            </a>
-        </div>
-        <p>&copy; 2026 Beltah Plumbing Solutions. Engineered for Excellence.</p>
-    </footer>
-
-    <!-- Client Script Architecture for Lightbox Image Automation -->
-    <script>
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        const closeBtn = document.getElementById('lightbox-close');
-
-        document.querySelectorAll('.gallery-img').forEach(img => {
-            img.addEventListener('click', () => {
-                lightboxImg.src = img.src;
-                lightbox.classList.remove('opacity-0', 'pointer-events-none');
-            });
-        });
-
-        const closeLightbox = () => {
-            lightbox.classList.add('opacity-0', 'pointer-events-none');
-            setTimeout(() => { lightboxImg.src = ''; }, 300);
+        const updateCount = () => {
+          const current = +counter.innerText;
+          if (current < target) {
+            counter.innerText = Math.ceil(current + increment);
+            setTimeout(updateCount, 25);
+          } else {
+            counter.innerText = target;
+          }
         };
+        updateCount();
+      });
+    };
 
-        closeBtn.addEventListener('click', closeLightbox);
-        lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
-    </script>
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            startCounters();
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      observer.observe(counterRow);
+    } else {
+      startCounters();
+    }
+
+    // Lightbox Implementation
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    galleryItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const src = item.getAttribute('data-src');
+        
+        const lightbox = document.createElement('div');
+        lightbox.id = 'lightbox';
+        lightbox.className = 'fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 transition-opacity duration-300';
+        
+        lightbox.innerHTML = `
+          <div class="relative max-w-4xl max-h-[90vh] transform scale-95 transition-transform duration-300">
+            <button id="lightbox-close" class="absolute -top-12 right-0 text-white text-3xl focus:outline-none hover:text-amber-400 transition-colors focus-ring p-2" aria-label="Close Lightbox">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+            <img src="${src}" alt="Enlarged Project Execution" class="max-w-[90vw] max-h-[85vh] object-contain rounded-xl shadow-2xl">
+          </div>
+        `;
+        
+        document.body.appendChild(lightbox);
+        document.body.style.overflow = 'hidden';
+        
+        setTimeout(() => {
+          lightbox.classList.remove('opacity-0');
+          lightbox.querySelector('div').classList.remove('scale-95');
+        }, 10);
+        
+        const closeLightbox = () => {
+          lightbox.classList.add('opacity-0');
+          lightbox.querySelector('div').classList.add('scale-95');
+          setTimeout(() => {
+            lightbox.remove();
+            document.body.style.overflow = '';
+          }, 300);
+        };
+        
+        lightbox.addEventListener('click', (e) => {
+          if (e.target === lightbox) closeLightbox();
+        });
+        lightbox.querySelector('#lightbox-close').addEventListener('click', closeLightbox);
+        
+        const escapeHandler = (e) => {
+          if (e.key === 'Escape') {
+            closeLightbox();
+            document.removeEventListener('keydown', escapeHandler);
+          }
+        };
+        document.addEventListener('keydown', escapeHandler);
+      });
+    });
+
+    // Form Processing Architecture (Web3Forms API Client)
+    const form = document.getElementById('booking-form');
+    const feedback = document.getElementById('form-feedback');
+    const btnText = document.getElementById('btn-text');
+    const btnIcon = document.getElementById('btn-icon');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      btnText.innerText = "Processing System...";
+      btnIcon.className = "fa-solid fa-circle-notch fa-spin";
+      
+      const formData = new FormData(form);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: json
+      })
+      .then(async (response) => {
+        let res = await response.json();
+        if (response.status == 200) {
+          feedback.innerHTML = `
+            <div class="flex flex-col items-center gap-4 animate-fade-in">
+              <div class="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-3xl">
+                <i class="fa-solid fa-circle-check"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white">Booking Received!</h3>
+              <p class="text-sm text-slate-400 max-w-sm">We will contact you via phone or email within 2 hours to confirm scheduling details.</p>
+            </div>
+          `;
+          feedback.classList.remove('hidden');
+          form.reset();
+        } else {
+          throw new Error(res.message);
+        }
+      })
+      .catch(error => {
+        feedback.innerHTML = `
+          <div class="flex flex-col items-center gap-4">
+            <div class="w-16 h-16 rounded-full bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 text-3xl">
+              <i class="fa-solid fa-circle-xmark"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Submission Error</h3>
+            <p class="text-sm text-slate-400 max-w-sm">System dispatch failed. Please call us directly for emergency booking support.</p>
+            <button onclick="document.getElementById('form-feedback').classList.add('hidden')" class="mt-2 text-xs font-bold uppercase text-amber-400 tracking-wider hover:underline">Try Again</button>
+          </div>
+        `;
+        feedback.classList.remove('hidden');
+      })
+      .then(() => {
+        btnText.innerText = "Submit Request";
+        btnIcon.className = "fa-solid fa-paper-plane";
+      });
+    });
+  </script>
 </body>
 </html>
